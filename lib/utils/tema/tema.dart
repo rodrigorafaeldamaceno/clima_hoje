@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Tema {
+  static String imagemChuvoso = 'assets/images/chuvoso.png';
+  static String imagemChuvoso2 = 'assets/images/chuvoso2.png';
+  static String imagemEnsolarado = 'assets/images/ensolarado.png';
+  static String imagemNublado = 'assets/images/nublado.png';
+
   static Color colorFromHex(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
 
