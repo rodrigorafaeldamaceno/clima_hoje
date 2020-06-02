@@ -1,19 +1,29 @@
+import 'package:climahoje/utils/rotas_app/rotas.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp(
+    defaultHome: '/home',
+  ));
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({this.defaultHome});
+
+  final String defaultHome;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Cliema Hoje',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'Montserrat',
       ),
-      home: Container(),
+      initialRoute: defaultHome,
+      onGenerateRoute: Rotas.generateRoute,
+      navigatorKey: Rotas.navigatorKey,
     );
   }
 }
