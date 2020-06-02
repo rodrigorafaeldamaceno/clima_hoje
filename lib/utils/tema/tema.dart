@@ -6,6 +6,8 @@ class Tema {
   static String imagemEnsolarado = 'assets/images/ensolarado.png';
   static String imagemNublado = 'assets/images/nublado.png';
 
+  static Color corPrincipal = Color(0xFF21A3BE);
+
   static Color colorFromHex(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
 

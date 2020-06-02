@@ -1,4 +1,5 @@
 import 'package:climahoje/utils/rotas_app/rotas.dart';
+import 'package:climahoje/utils/tema/tema.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,10 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cliema Hoje',
+      title: 'Clima Hoje',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
+        primaryColor: Tema.corPrincipal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Montserrat',
       ),

@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       width: 100,
       margin: EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.4),
+        color: Tema.corPrincipal.withOpacity(0.5),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
