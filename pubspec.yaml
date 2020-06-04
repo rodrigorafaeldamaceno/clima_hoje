@@ -20,6 +20,7 @@ dependencies:
   dio: ^3.0.9
   dio_http_cache: ^0.2.5
   flutter_dotenv: ^2.1.0
+  intl: ^0.16.1
 
 
 

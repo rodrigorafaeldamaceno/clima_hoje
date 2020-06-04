@@ -166,13 +166,13 @@ class Uv {
 
 class TextIcon {
   Icon icon;
-  Text text;
+  TextDescricao text;
 
   TextIcon({this.icon, this.text});
 
   TextIcon.fromJson(Map<String, dynamic> json) {
     icon = json['icon'] != null ? new Icon.fromJson(json['icon']) : null;
-    text = json['text'] != null ? new Text.fromJson(json['text']) : null;
+    text = json['text'] != null ? new TextDescricao.fromJson(json['text']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -215,15 +215,15 @@ class Icon {
   }
 }
 
-class Text {
+class TextDescricao {
   String pt;
   String en;
   String es;
   Phrase phrase;
 
-  Text({this.pt, this.en, this.es, this.phrase});
+  TextDescricao({this.pt, this.en, this.es, this.phrase});
 
-  Text.fromJson(Map<String, dynamic> json) {
+  TextDescricao.fromJson(Map<String, dynamic> json) {
     pt = json['pt'];
     en = json['en'];
     es = json['es'];

@@ -15,7 +15,7 @@ abstract class _HomeStoreBase with Store {
   @observable
   bool carregandoDados = false;
 
-  Future<ClimaCidade> buscarClimaPorCidade({int idCidade: 6638}) async {
+  Future<ClimaCidade> buscarClimaPorCidade({int idCidade: 3477}) async {
     return dados.buscarClimaPorCidade(idCidade: idCidade);
   }
 }
