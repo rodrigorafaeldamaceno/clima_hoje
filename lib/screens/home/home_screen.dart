@@ -62,7 +62,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Image.asset(
-            Tema.imagemChuvoso,
+            dadosDoDia.rain.probability > 70
+                ? Tema.imagemChuvoso
+                : Tema.imagemEnsolarado,
             width: 75,
             height: 75,
           ),
@@ -175,7 +177,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Image.asset(
-                Tema.imagemChuvoso,
+                controller.climaCidade.data[0].rain.probability > 70
+                    ? Tema.imagemChuvoso
+                    : Tema.imagemEnsolarado,
                 width: 200,
                 height: 200,
               ),
