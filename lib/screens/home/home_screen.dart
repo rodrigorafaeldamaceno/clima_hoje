@@ -1,9 +1,30 @@
+import 'package:climahoje/stores/home/home_store.dart';
 import 'package:climahoje/utils/tema/tema.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Size size;
+
+  HomeStore controller = HomeStore();
+
+  @override
+  void initState() {
+    controller.carregandoDados = true;
+    controller.buscarClimaPorCidade().then((value) {
+      controller.carregandoDados = false;
+      if (value == null) return;
+
+      controller.climaCidade = value;
+    });
+    super.initState();
+  }
 
   Widget cardClimaNaSemana() {
     return Container(
@@ -148,12 +169,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        title: Text(
-          'Medianeira - PR',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        title: Observer(builder: (_) {
+          return Text(
+            controller.carregandoDados
+                ? ''
+                : '${controller.climaCidade.name} - ${controller.climaCidade.state}',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+            ),
+          );
+        }),
       ),
       body: SingleChildScrollView(
         child: Column(
