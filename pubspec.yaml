@@ -45,7 +45,7 @@ dev_dependencies:
 flutter_native_splash:
   image: assets/images/chuvoso.png
   color: "21A3BE"
-  fill: true
+  # fill: true
 
 # gera o icone da aplicação
 # flutter pub run flutter_launcher_icons:main

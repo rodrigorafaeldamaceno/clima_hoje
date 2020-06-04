@@ -196,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
+        centerTitle: true,
         title: Observer(builder: (_) {
           return Text(
             controller.carregandoDados || controller.climaCidade == null
