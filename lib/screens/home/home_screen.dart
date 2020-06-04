@@ -32,8 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
     String diaDaSemana =
         UtilsData.pegarDiaDaSemana(dadosDoDia.date).toUpperCase();
 
-    String diaDoMes = UtilsData.pegarDiaDoMes(dadosDoDia.date);
-
     return Container(
       width: 100,
       margin: EdgeInsets.all(4),

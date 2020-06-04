@@ -5,8 +5,6 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DataHome {
-  DataHome() {}
-
   Future<ClimaCidade> buscarClimaPorCidade({int idCidade}) async {
     ClimaCidade climaCidade = ClimaCidade();
 
