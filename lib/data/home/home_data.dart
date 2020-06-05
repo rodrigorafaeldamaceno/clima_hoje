@@ -2,12 +2,15 @@ import 'package:climahoje/models/clima_cidade/clima_cidade.dart';
 import 'package:climahoje/utils/rotas_api/rotas_api.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DataHome {
-  Future<ClimaCidade> buscarClima({double lat: -24, double log: -53}) async {
+  Future<ClimaCidade> buscarClima(
+      {@required double lat, @required double log}) async {
     ClimaCidade climaCidade = ClimaCidade();
 
+    print('$lat - $log');
     String key = DotEnv().env['KEY'];
 
     try {

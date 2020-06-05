@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
             ),
