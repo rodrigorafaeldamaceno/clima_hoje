@@ -5,16 +5,20 @@ import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DataHome {
-  Future<ClimaCidade> buscarClimaPorCidade({int idCidade}) async {
+  Future<ClimaCidade> buscarClima({double lat: -24, double log: -53}) async {
     ClimaCidade climaCidade = ClimaCidade();
 
-    print(' "${RotasApi.BUSCAR_CLIMA_POR_CIDADE}/$idCidade/days/15"');
-    String token = DotEnv().env['TOKEN'];
+    String key = DotEnv().env['KEY'];
 
     try {
       Response response = await Dio().get(
-        "${RotasApi.BUSCAR_CLIMA_POR_CIDADE}/$idCidade/days/15",
-        queryParameters: {'token': token},
+        RotasApi.BUSCAR_CLIMA_POR_GEOLOCALIZACAO,
+        queryParameters: {
+          'lat': lat,
+          'log': log,
+          'key': key,
+          'user_ip': 'remote',
+        },
         options: buildCacheOptions(
           Duration(days: 2),
           forceRefresh: true,

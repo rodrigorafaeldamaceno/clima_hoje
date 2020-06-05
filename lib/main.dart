@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
       title: 'Clima Hoje',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // primarySwatch: Colors.blue,
         primaryColor: Tema.corPrincipal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Montserrat',

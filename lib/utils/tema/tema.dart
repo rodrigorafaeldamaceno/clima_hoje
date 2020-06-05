@@ -1,12 +1,59 @@
 import 'package:flutter/material.dart';
 
 class Tema {
-  static String imagemChuvoso = 'assets/images/chuvoso.png';
-  static String imagemChuvoso2 = 'assets/images/chuvoso2.png';
-  static String imagemEnsolarado = 'assets/images/ensolarado.png';
-  static String imagemNublado = 'assets/images/nublado.png';
+  static String imageStorm = 'assets/images/storm.png';
+  static String imageRain = 'assets/images/rain.png';
+  static String imageClearDay = 'assets/images/clear_day.png';
+  static String imageCloudlyDay = 'assets/images/cloudy_day.png';
+  static String imageCloudlyNight = 'assets/images/cloudy_night.png';
+  static String imageClearNight = 'assets/images/clear_night.png';
+  static String imageFog = 'assets/images/fog.png';
+  static String imageHail = 'assets/images/hail.png';
 
   static Color corPrincipal = Color(0xFF21A3BE);
+
+  static String verificaImagem(String condition) {
+    switch (condition) {
+      case 'storm':
+        return imageStorm;
+        break;
+      case 'rain':
+        return imageRain;
+        break;
+      case 'cloudy_day':
+        return imageCloudlyDay;
+        break;
+      case 'cloudy_day':
+        return imageCloudlyNight;
+        break;
+      case 'cloud':
+        return imageCloudlyDay;
+        break;
+      case 'clear_day':
+        return imageClearDay;
+        break;
+      case 'clear_night':
+        return imageClearNight;
+        break;
+      case 'fog':
+        return imageFog;
+        break;
+      case 'hail':
+        return imageHail;
+        break;
+      case 'snow':
+        return imageHail;
+        break;
+      case 'none_day':
+        return imageClearDay;
+        break;
+      case 'none_night':
+        return imageClearNight;
+        break;
+      default:
+        return imageClearDay;
+    }
+  }
 
   static Color colorFromHex(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
