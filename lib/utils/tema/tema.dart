@@ -4,8 +4,8 @@ class Tema {
   static String imageStorm = 'assets/images/storm.png';
   static String imageRain = 'assets/images/rain.png';
   static String imageClearDay = 'assets/images/clear_day.png';
-  static String imageCloudlyDay = 'assets/images/cloudy_day.png';
-  static String imageCloudlyNight = 'assets/images/cloudy_night.png';
+  static String imageCloudlyDay = 'assets/images/cloudly_day.png';
+  static String imageCloudlyNight = 'assets/images/cloudly_night.png';
   static String imageClearNight = 'assets/images/clear_night.png';
   static String imageFog = 'assets/images/fog.png';
   static String imageHail = 'assets/images/hail.png';
@@ -15,15 +15,15 @@ class Tema {
   static String verificaImagem(String condition) {
     switch (condition) {
       case 'storm':
-        return imageStorm;
+        return Tema.imageStorm;
         break;
       case 'rain':
         return imageRain;
         break;
-      case 'cloudy_day':
+      case 'cloudly_day':
         return imageCloudlyDay;
         break;
-      case 'cloudy_day':
+      case 'cloudly_day':
         return imageCloudlyNight;
         break;
       case 'cloud':

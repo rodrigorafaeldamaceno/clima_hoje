@@ -74,8 +74,8 @@ flutter:
     - .env
     - assets/images/storm.png
     - assets/images/rain.png
-    - assets/images/cloudy_day.png
-    - assets/images/cloudy_night.png
+    - assets/images/cloudly_day.png
+    - assets/images/cloudly_night.png
     - assets/images/clear_day.png
     - assets/images/clear_night.png
     - assets/images/fog.png
