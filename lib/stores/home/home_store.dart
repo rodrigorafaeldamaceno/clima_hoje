@@ -18,7 +18,7 @@ abstract class _HomeStoreBase with Store {
 
   Future<ClimaCidade> buscarClima() async {
     Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.medium);
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
 
     ClimaCidade climaCidade = await dados.buscarClima(
       lat: position.latitude,
