@@ -1,5 +1,6 @@
 import 'package:climahoje/data/home/home_data.dart';
 import 'package:climahoje/models/clima_cidade/clima_cidade.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:mobx/mobx.dart';
 part 'home_store.g.dart';
@@ -15,7 +16,15 @@ abstract class _HomeStoreBase with Store {
   @observable
   bool carregandoDados = false;
 
-  Future<ClimaCidade> buscarClimaPorCidade({int idCidade: 3477}) async {
-    return dados.buscarClimaPorCidade(idCidade: idCidade);
+  Future<ClimaCidade> buscarClima() async {
+    Position position = await Geolocator()
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
+
+    ClimaCidade climaCidade = await dados.buscarClima(
+      lat: position.latitude,
+      log: position.longitude,
+    );
+
+    return climaCidade;
   }
 }

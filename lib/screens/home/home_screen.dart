@@ -1,4 +1,4 @@
-import 'package:climahoje/models/clima_cidade/data.dart';
+import 'package:climahoje/models/clima_cidade/clima_cidade.dart';
 import 'package:climahoje/stores/home/home_store.dart';
 import 'package:climahoje/utils/classes/utils_data.dart';
 import 'package:climahoje/utils/tema/tema.dart';
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     controller.carregandoDados = true;
-    controller.buscarClimaPorCidade().then((value) {
+    controller.buscarClima().then((value) {
       controller.carregandoDados = false;
       if (value == null) return;
 
@@ -28,10 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  Widget cardClimaNaSemana(Data dadosDoDia) {
-    String diaDaSemana =
-        UtilsData.pegarDiaDaSemana(dadosDoDia.date).toUpperCase();
-
+  Widget cardClimaNaSemana(Forecast dadosDoDia) {
     return Container(
       width: 100,
       margin: EdgeInsets.all(4),
@@ -46,23 +43,21 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 4,
           ),
           Text(
-            diaDaSemana.substring(0, 3),
+            dadosDoDia.weekday,
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,
             ),
           ),
           Text(
-            UtilsData.pegarDiaDoMes(dadosDoDia.date),
+            dadosDoDia.date.substring(0, 2),
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,
             ),
           ),
           Image.asset(
-            dadosDoDia.rain.probability > 70
-                ? Tema.imagemChuvoso
-                : Tema.imagemEnsolarado,
+            Tema.verificaImagem(dadosDoDia.condition),
             width: 75,
             height: 75,
           ),
@@ -71,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 10,
           ),
           Text(
-            '${dadosDoDia.temperature.min}°',
+            '${dadosDoDia.min}°',
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,
@@ -84,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Text(
-            '${dadosDoDia.temperature.max}°',
+            '${dadosDoDia.max}°',
             style: TextStyle(
               fontSize: 20,
               color: Colors.white,
@@ -96,20 +91,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget cardClimaDoDia() {
-    String diaDaSemana =
-        UtilsData.pegarDiaDaSemana(controller.climaCidade.data[0].date)
-            .toUpperCase();
-
-    String temperaturaAtual = ((controller.climaCidade.data[0].temperature.max +
-                controller.climaCidade.data[0].temperature.min) /
-            2)
-        .toStringAsFixed(0);
+    String diaDaSemana = UtilsData.pegarDiaDaSemanaCompleto(
+        controller.climaCidade.results.forecast[0].weekday);
 
     String temperaturaMinima =
-        controller.climaCidade.data[0].temperature.min.toString();
+        controller.climaCidade.results.forecast[0].min.toString();
 
     String temperaturaMaxima =
-        controller.climaCidade.data[0].temperature.max.toString();
+        controller.climaCidade.results.forecast[0].max.toString();
 
     return Container(
       height: size.height * 0.5,
@@ -126,6 +115,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
+            height: 4,
+          ),
+          Flexible(
+            child: Text(
+              'Situação: ${controller.climaCidade.results.description} ',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ),
+          SizedBox(
             height: 20,
           ),
           Row(
@@ -134,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Column(
                 children: <Widget>[
                   Text(
-                    '$temperaturaAtual°',
+                    '${controller.climaCidade.results.temp}°',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 40,
@@ -175,9 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Image.asset(
-                controller.climaCidade.data[0].rain.probability > 70
-                    ? Tema.imagemChuvoso
-                    : Tema.imagemEnsolarado,
+                Tema.verificaImagem(
+                  controller.climaCidade.results.forecast[0].condition,
+                ),
                 width: 200,
                 height: 200,
               ),
@@ -199,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Text(
             controller.carregandoDados || controller.climaCidade == null
                 ? ''
-                : '${controller.climaCidade.name} - ${controller.climaCidade.state}',
+                : '${controller.climaCidade.results.city}',
             style: TextStyle(
               fontWeight: FontWeight.w700,
             ),
@@ -222,12 +225,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: size.height * 0.35,
                       child: ListView.builder(
-                        itemCount: controller.climaCidade.data.length - 1,
+                        itemCount:
+                            controller.climaCidade.results.forecast.length - 1,
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return cardClimaNaSemana(
-                            controller.climaCidade.data[index + 1],
+                            controller.climaCidade.results.forecast[index + 1],
                           );
                         },
                       ),

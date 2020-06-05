@@ -23,4 +23,31 @@ class UtilsData {
 
     return diaDoMes.length == 2 ? diaDoMes : '0$diaDoMes';
   }
+
+  static String pegarDiaDaSemanaCompleto(String dia) {
+    switch (dia) {
+      case 'Seg':
+        return 'Segunda-feira';
+        break;
+      case 'Ter':
+        return 'Terça-feira';
+        break;
+      case 'Qua':
+        return 'Quarta-feira';
+        break;
+      case 'Qui':
+        return 'Quinta-feira';
+        break;
+      case 'Sex':
+        return 'Sexta-feira';
+        break;
+      case 'Sáb':
+        return 'Sábado-feira';
+        break;
+      case 'Dom':
+        return 'Domingo-feira';
+        break;
+      default:
+    }
+  }
 }

@@ -2,19 +2,26 @@ import 'package:climahoje/models/clima_cidade/clima_cidade.dart';
 import 'package:climahoje/utils/rotas_api/rotas_api.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DataHome {
-  Future<ClimaCidade> buscarClimaPorCidade({int idCidade}) async {
+  Future<ClimaCidade> buscarClima(
+      {@required double lat, @required double log}) async {
     ClimaCidade climaCidade = ClimaCidade();
 
-    print(' "${RotasApi.BUSCAR_CLIMA_POR_CIDADE}/$idCidade/days/15"');
-    String token = DotEnv().env['TOKEN'];
+    print('$lat - $log');
+    String key = DotEnv().env['KEY'];
 
     try {
       Response response = await Dio().get(
-        "${RotasApi.BUSCAR_CLIMA_POR_CIDADE}/$idCidade/days/15",
-        queryParameters: {'token': token},
+        RotasApi.BUSCAR_CLIMA_POR_GEOLOCALIZACAO,
+        queryParameters: {
+          'lat': lat,
+          'log': log,
+          'key': key,
+          'user_ip': 'remote',
+        },
         options: buildCacheOptions(
           Duration(days: 2),
           forceRefresh: true,

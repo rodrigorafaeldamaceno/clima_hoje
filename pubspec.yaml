@@ -16,11 +16,11 @@ dependencies:
 
   material_design_icons_flutter: ^4.0.5245
   flutter_mobx: ^1.1.0
-  provider: ^4.1.2
   dio: ^3.0.9
   dio_http_cache: ^0.2.5
   flutter_dotenv: ^2.1.0
   intl: ^0.16.1
+  geolocator: ^5.3.2+2
 
 
 
@@ -43,9 +43,11 @@ dev_dependencies:
 # gera a splash screen
 # flutter pub pub run flutter_native_splash:create
 flutter_native_splash:
-  image: assets/images/chuvoso.png
+  image: assets/images/splash.png
   color: "21A3BE"
-  # fill: true
+  fill: true
+  android_disable_fullscreen: false
+
 
 # gera o icone da aplicação
 # flutter pub run flutter_launcher_icons:main
@@ -70,10 +72,14 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
-    - assets/images/chuvoso.png
-    - assets/images/chuvoso2.png
-    - assets/images/ensolarado.png
-    - assets/images/nublado.png
+    - assets/images/storm.png
+    - assets/images/rain.png
+    - assets/images/cloudy_day.png
+    - assets/images/cloudy_night.png
+    - assets/images/clear_day.png
+    - assets/images/clear_night.png
+    - assets/images/fog.png
+    - assets/images/hail.png
 
 
 
