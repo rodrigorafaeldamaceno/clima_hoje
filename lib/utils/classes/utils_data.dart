@@ -42,10 +42,10 @@ class UtilsData {
         return 'Sexta-feira';
         break;
       case 'Sáb':
-        return 'Sábado-feira';
+        return 'Sábado';
         break;
       case 'Dom':
-        return 'Domingo-feira';
+        return 'Domingo';
         break;
       default:
     }
